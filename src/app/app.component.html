@@ -1,0 +1,28 @@
+
+
+<!-- As a link -->
+<nav class="navbar navbar-dark ">
+    <a class="navbar-brand" (click) = "linkclick('home')" style="cursor: pointer;" [ngClass] = "{active: selectedMenu ==='home'}">Home</a>
+    <a class="navbar-brand" (click) = "linkclick('contact')" style="cursor: pointer;" [ngClass] = "{active: selectedMenu==='contact'}">Contact</a>
+    <a class="navbar-brand" (click) = "linkclick('about')" style="cursor: pointer;" [ngClass] = "{active: selectedMenu === 'about'}">About</a>
+</nav>
+
+
+<p *ngIf = "isButtonClicked">The text typed in input is {{ textReceived }}</p>
+<div>
+  <app-home-component *ngIf = "selectedMenu==='home'"
+  (textTyped) = "onTextRecived($event)">
+<p>{{ textReceived }}</p></app-home-component>
+</div>
+
+
+<div>
+  <app-contactcomponent *ngIf = "selectedMenu==='contact'"
+(userText) = "oncontactText($event)"></app-contactcomponent>
+</div>
+
+<div >
+  <app-about-component *ngIf = "selectedMenu==='about'"
+  (UserAboutText) ="onAboutTextReceived($event)"
+  ></app-about-component>
+</div>
